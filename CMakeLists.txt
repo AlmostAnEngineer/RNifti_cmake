@@ -12,7 +12,7 @@ execute_process(
     COMMAND "./configure --static && make"
 )
 
-file(COPY ${CMAKE_SOURCE_DIR}/src/zlib/libz.a DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/zlib/libz.a DESTINATION ${CMAKE_BINARY_DIR})
 file(GLOB_RECURSE NIFTILIB_INC "${CMAKE_BINARY_DIR}/include/niftilib/*.h")
 file(GLOB RNIFTI_INC
         "${CMAKE_BINARY_DIR}/include/RNifty.h"
@@ -37,13 +37,7 @@ install(TARGETS znzlib DESTINATION lib)
 install(FILES build/libz.a DESTINATION lib)
 
 install(
-        DIRECTORY "inst/include/niftilib/"
-        DESTINATION include
-        FILES_MATCHING
-        PATTERN "*.h"
-)
-install(
-        DIRECTORY "inst/include/RNifti/"
+        DIRECTORY "inst/include/"
         DESTINATION include
         FILES_MATCHING
         PATTERN "*.h"
